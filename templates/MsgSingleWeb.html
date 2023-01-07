@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cloud Messages Board (1) Home Page</title>
+    <style>
+        nav>ul>li {
+            display: inline;
+            margin-right: 29px;
+            font-weight: bolder;
+
+        }
+
+        nav>ul>li:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        nav>ul {
+            margin-top: 29px;
+        }
+
+        nav {
+            background-color: rgb(255, 72, 0);
+            color: white;
+            width: 70%;
+            margin: auto;
+            height: 29px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .submit-msg {
+            border: 1px solid black;
+            width: 70%;
+            margin: auto;
+            padding-bottom: 99px;
+            height: 500px;
+        }
+
+
+        input {
+            width: 299px;
+            margin: 19px;
+            height: 29px;
+        }
+
+        .message {
+            height: 99px;
+        }
+
+        .left {
+            float: left;
+            border-right: 1px solid rgb(255, 72, 0);
+            height: 500px;
+            padding: 50px 50px 0px 50px;
+        }
+
+        .right {
+            float: right;
+            border-left: 1px solid rgb(255, 72, 0);
+            border-left: 1px solid rgb(255, 72, 0);
+            height: 500px;
+            padding: 50px 50px 0px 50px;
+        }
+
+        table {
+            border-collapse: collapse;
+            color: black;
+        }
+
+
+        td,
+        th {
+            border: 1px solid rgb(255, 72, 0);
+            text-align: center;
+            padding: 8px;
+            width: 100px;
+        }
+
+        th {
+            background-color: rgb(255, 72, 0);
+            color: white;
+        }
+
+
+        .msg-b {
+            height: 200px;
+            width: auto;
+            background-color: white;
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'hello_world' %}">Hello World EX-1</a></li>
+            <li><a href="{% url 'hello_world_improve' %}">Home EX-2</a></li>
+            <li><a href="{% url 'cloud_message' %}">Message EX-3</a></li>
+            <li><a href="{% url 'different_response_type' %}">Diferent Class Response EX-4</a></li>
+            <li><a href="/admin/" target="_blank">Admin Panel</a></li>
+        </ul>
+    </nav>
+
+    <div class="submit-msg">
+
+
+
+
+        <div class="left">
+            <h1 class="submit-msg-form">Submit Messages Ribbon</h1>
+            <form class="submit-msg-form" action="{% url 'cloud_message_submission' %}" method="post">
+                {% csrf_token %}
+                Sender :
+                <br>
+                <input type="text" name="userA"  required/> <br>
+                Receiver :
+                <br>
+                <input type="text" name="userB" required /> <br>
+                Message :
+                <br>
+                <input class="message" type="text" name="msg" required /> <br>
+                <input type="submit" value="Message submission" />
+            </form>
+        </div>
+
+
+        <div class="right">
+            <h1>Get Messages Ribbon</h1>
+            <form action="{% url 'cloud_message' %}" method="GET">
+                Receiver :
+                <br>
+                <input type="text" name="receiver"> <br>
+                <input type="submit" value="Get a message">
+            </form>
+
+            <br>
+            <hr style="color: rgb(255, 72, 0);">
+
+
+
+            <div class="msg-b">
+                <table class="table">
+                    <tr>
+                        <th>Message Time</th>
+                        <th>Message Source</th>
+                        <th>Message Content</th>
+                    </tr>
+                    <br>
+
+                    
+                    {% for msg in msg %}
+                        
+                    
+                        
+                    <tr>
+                        <td>{{ msg.date }}</td>
+                        <td>{{ msg.userA }}</td>
+                        <td>{{ msg.msg }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World Improve</title>
+    <style>
+        .main-frame {
+            width: 70%;
+            height: 500px;
+            margin: auto;
+            border: 1px solid rgb(255, 72, 0);
+        }
+
+        nav>ul>li {
+            display: inline;
+            margin-right: 29px;
+            font-weight: bolder;
+
+        }
+
+        nav>ul>li:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        nav>ul {
+            margin-top: 29px;
+        }
+
+        nav {
+            background-color: rgb(255, 72, 0);
+            color: white;
+            width: 70%;
+            margin: auto;
+            height: 29px;
+        }
+
+        .content {
+            padding: 19px;
+        }
+
+        nav>ul>li>a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'hello_world' %}">Hello World EX-1</a></li>
+            <li><a href="{% url 'hello_world_improve' %}">Home EX-2</a></li>
+            <li><a href="{% url 'cloud_message' %}">Message EX-3</a></li>
+            <li><a href="{% url 'different_response_type' %}">Diferent Class Response EX-4</a></li>
+            <li><a href="/admin/" target="_blank">Admin Panel</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-frame">
+        <h1 class="content">Different Class Response Type</h1>
+        <ul>
+            <li><a href="{% url 'httpresponse' %}">HttpResponse</a></p>
+            </li>
+            <li><a href="{% url 'httpResponsePermanentRedirect' %}">HttpResponsePermanentRedirect</a></p>
+            </li>
+            <li><a href="{% url 'httpResponseNotModified' %}">HttpResponseNotModified</a></p>
+            </li>
+            <li><a href="{% url 'httpResponseBadRequest' %}">HttpResponseBadRequest</a></p>
+            </li>
+            <li><a href="{% url 'httpResponseForbidden' %}">HttpResponseForbidden</a></p>
+            </li>
+            <li><a href="{% url 'httpResponseNotAllowed' %}">HttpResponseNotAllowed</a></p>
+            </li>
+            <li><a href="{% url 'httpResponseGone' %}">HttpResponseGone</a></p>
+            </li>
+            <li><a href="{% url 'httpResponseServerError' %}">HttpResponseServerError</a></p>
+            </li>
+            <li><a href="{% url 'httpResponseNotFound' %}">HttpResponseNotFound</a></p>
+            </li>
+            <li><a href="{% url 'json_response_class' %}">Json Response Class</a></p>
+            </li>
+        </ul>
+
+    </div>
+</body>
+
+</html>
